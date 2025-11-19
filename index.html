@@ -97,7 +97,7 @@
           <div class="col-lg-8 text-center">
             <h2>Hi, I'm Jumli</h2>
             <p>I like <span class="typed"
-                data-typed-items="anime [Genre:Fantasy Isekai action]!_! ,Games [Genre:action RPG Sandbox],Reading [Manga Manhua manhwa and sometimes LN ],Programming hehe!!, Pop music [J-pop Electropop ], Dogs, photography  "></span><span
+                data-typed-items="anime [Genre:Fantasy Isekai action]!_! ,Games [Genre:action RPG Sandbox],Reading [Manga Manhua manhwa and sometimes LN ],Programming hehe!!, Pop music J-pop, Dogs, photography  "></span><span
                 class="typed-cursor" aria-hidden="true"></span></p>
             <div class="social-links">
               <a href="https://x.com/boi_404_"><i class="bi bi-twitter-x"></i></a>
@@ -429,7 +429,7 @@
     </section><!-- /Services Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section" >
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -629,9 +629,10 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
- 
+  
   <script>
-    function uploadp(tag, year, url, title,) {
+    function uploadp(tag, cap, url, title,) {
+    
       document.getElementById("portfolio-list").innerHTML += `
        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-${tag}">
               <div class="portfolio-card">
@@ -652,20 +653,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="portfolio-meta">
-                <div class="project-tags">
-                    <span class="tag">${tag}</span>
-                   
+                <div class="portfolio-meta" style=" display:flex;justify-content:center;">
+                  <div class="project-tags">
+                    <span class="tag" style="text-align:center; text-transform:none;   background-color:transparent;color:white; font-size:15px;">${cap}</span>
+                    
                   </div>
-                  <div class="project-year">${year}</div>
-                </div>
               </div>
             </div>`
 
     }
-    uploadp("photography", "2025", "https://ik.imagekit.io/dyhzqtjvr/IMG_20251025_163502.jpg?updatedAt=1763452309766", 'Sleepy head ')
-    uploadp("photography", "2025", "https://ik.imagekit.io/dyhzqtjvr/IMG_20250523_200129.jpg", "A place i hate the most")
-
+  //  console.log('wawswadsa')
+    uploadp("photography", " He's a living a life we dream of T_T Eat sleep repeat", "https://ik.imagekit.io/dyhzqtjvr/IMG_20251025_163502.jpg?updatedAt=1763452309766", 'Sleepy head ')
+    uploadp("photography", "Just need to endure this shity place for 3 more years!!!", "https://ik.imagekit.io/dyhzqtjvr/IMG_20250523_200129.jpg", "HELL")
+    uploadp("development","Just checking if it's working hehehe test img","https://ik.imagekit.io/dyhzqtjvr/Videoshot_20251119_120946.jpg?updatedAt=1763534442298","Site Development")
+    uploadp("development","Buggyflix under-development🤓","https://ik.imagekit.io/dyhzqtjvr/IMG_20250728_190302.jpg?updatedAt=1763533052226","Buggyflix")
+   // uploadp("photography","~_~ W view","https://ik.imagekit.io/dyhzqtjvr/video_20251116_054813.mp4?updatedAt=1763452077216","Heaven")
 
 
 
@@ -699,7 +701,7 @@
     upload("filetype-html", "NTA Mock Test", "I made a clone of NTA quiz site. I made this site so we student's  can practice for our entrance exam(CUET UG) since the main site was't working for us ( At the moment  when i'm writing this made the site).", "https://github.com/jumlid/NTA_mock_Test")
     upload("filetype-html", "Buggyroll", "Unlike Buggyflix where i used a third party server to fetch movie here i used my google drive to host video and this was my one of the first real project i ever made so x_X update: :( The server i used to host my API got expired  ) ", "https://github.com/jumlid/buggyroll") 
   </script>
- <script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 
 </html>
