@@ -9,7 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="https://d2naapwr4zpnvs.cloudfront.net/influencerAvatar/132043-1692733186959-small-983138528.jpg" rel="icon">
+  <link href="https://d2naapwr4zpnvs.cloudfront.net/influencerAvatar/132043-1692733186959-small-983138528.jpg"
+    rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -45,7 +46,8 @@
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="https://d2naapwr4zpnvs.cloudfront.net/influencerAvatar/132043-1692733186959-small-983138528.jpg" alt="icon" style="border-radius: 50%;">
+        <img src="https://d2naapwr4zpnvs.cloudfront.net/influencerAvatar/132043-1692733186959-small-983138528.jpg"
+          alt="icon" style="border-radius: 50%;">
         <h1 class="sitename">Jumli</h1>
       </a>
 
@@ -89,7 +91,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section bg-dark text-white">
 
-      <img src="https://wallpapers.com/images/hd/rimuru-tempest-illustration-ixor5o2asfxnwqv0.jpg" alt=""
+      <img id="back_img" src="https://wallpapers.com/images/hd/rimuru-tempest-illustration-ixor5o2asfxnwqv0.jpg" alt=""
         data-aos="fade-in">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -429,7 +431,7 @@
     </section><!-- /Services Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section" >
+    <section id="portfolio" class="portfolio section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -551,11 +553,11 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Jumli</span>
+            <span class="sitename">Jumli d</span>
           </a>
           <p>Thanks for visiting my site :) This was my first site where i used a template for design i'm planing on
-            adding a blog section and a admin panel on this site soon</p>
-            <p>"Simping for  waifu isn't weird 🙃"</p>
+            adding a blog section and a admin panal on this site soon</p>
+          <p>"Simping for waifu isn't weird 🙃"</p>
           <div class="social-links d-flex mt-4">
             <a href="https://x.com/boi_404_" target="_blank"> <i class="bi bi-twitter-x"></i></a>
             <a href="https://github.com/jumlid" target="_blank"> <i class=" bi bi-github"></i></a>
@@ -629,10 +631,57 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  
+
   <script>
+    window.addEventListener("load", (e) => {
+      if (window.innerWidth < 750) {
+        document.getElementById("back_img").src = "https://r1.ilikewallpaper.net/iphone-12-pro-max-wallpapers/download-114311/rimuru-tempest.jpg"
+
+      }
+      else {
+        document.getElementById("back_img").src = "https://wallpapers.com/images/hd/rimuru-tempest-illustration-ixor5o2asfxnwqv0.jpg"
+      }
+    })
+    window.addEventListener("resize", (e) => {
+      // console.log(window.innerWidth)
+      if (window.innerWidth < 750) {
+        document.getElementById("back_img").src = "https://r1.ilikewallpaper.net/iphone-12-pro-max-wallpapers/download-114311/rimuru-tempest.jpg"
+
+      }
+      else {
+        document.getElementById("back_img").src = "https://wallpapers.com/images/hd/rimuru-tempest-illustration-ixor5o2asfxnwqv0.jpg"
+      }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     function uploadp(tag, cap, url, title,) {
-    
+
       document.getElementById("portfolio-list").innerHTML += `
        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-${tag}">
               <div class="portfolio-card">
@@ -662,18 +711,20 @@
             </div>`
 
     }
-  //  console.log('wawswadsa')
+    //  console.log('wawswadsa')
     uploadp("photography", " He's a living a life we dream of T_T Eat sleep repeat", "https://ik.imagekit.io/dyhzqtjvr/IMG_20251025_163502.jpg?updatedAt=1763452309766", 'Sleepy head ')
     uploadp("photography", "Just need to endure this shity place for 3 more years!!!", "https://ik.imagekit.io/dyhzqtjvr/IMG_20250523_200129.jpg", "HELL")
-    uploadp("development","Just checking if it's working hehehe test img","https://ik.imagekit.io/dyhzqtjvr/Videoshot_20251119_120946.jpg?updatedAt=1763534442298","Site Development")
-    uploadp("development","Buggyflix under-development🤓","https://ik.imagekit.io/dyhzqtjvr/IMG_20250728_190302.jpg?updatedAt=1763533052226","Buggyflix")
-   // uploadp("photography","~_~ W view","https://ik.imagekit.io/dyhzqtjvr/video_20251116_054813.mp4?updatedAt=1763452077216","Heaven")
+    uploadp("development", "Just checking if it's working hehehe test img", "https://ik.imagekit.io/dyhzqtjvr/Videoshot_20251119_120946.jpg?updatedAt=1763534442298", "Site Development")
+    uploadp("development", "Buggyflix under-development🤓", "https://ik.imagekit.io/dyhzqtjvr/IMG_20250728_190302.jpg?updatedAt=1763533052226", "Buggyflix")
+    // uploadp("photography","~_~ W view","https://ik.imagekit.io/dyhzqtjvr/video_20251116_054813.mp4?updatedAt=1763452077216","Heaven")
 
 
 
 
-    function upload(project_type, project_name, about, url) {
-      document.getElementById("project_container").innerHTML += `
+    function upload(project_type, project_name, about, github, url,) {
+      if (url !=undefined) {
+       // console.log(url)
+        document.getElementById("project_container").innerHTML += `
          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="service-item">
               <div class="icon-wrapper">
@@ -681,27 +732,51 @@
               </div>
               <h4>${project_name}</h4>
               <p>${about}</p>
-              <a href="${url}" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
+              <a  class="read-more">
+                <a class="bi bi-github" style="font-size:20px; color:white;" href="${github}" target="_blank"></a>
+                <a class="bi bi-filetype-html" style="font-size:20px; color:white; margin-left:10px;" href="${url}" target="_blank"></a>
+                
               </a>
             </div>
           </div>
         
           
           `
+      }
+      else {
+
+
+        document.getElementById("project_container").innerHTML += `
+         <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="service-item">
+              <div class="icon-wrapper">
+                <i class="bi bi-${project_type}"></i>
+              </div>
+              <h4>${project_name}</h4>
+              <p>${about}</p>
+              <a  class="read-more">
+                <a class="bi bi-github" style="font-size:20px; color:white;" href="${github}" target="_blank"></a>
+               
+                
+              </a>
+            </div>
+          </div>
+        
+          
+          `
+      }
     }
 
-    upload("filetype-html", "Buggyflix", "Buggyflix is a netflix clone users can watch any movie for free ", "https://github.com/jumlid/Buggyflix")
-    upload("controller", "Memory Game", "It's a memory game i made using Vanilla Javascript and yep there are some bug which made it ultra hardcore hehe", "https://github.com/jumlid/Memory_Game")
-    upload("filetype-html", "Bonita", "Bonita is a Heaven for waifu simps Users can search for Cute waifu", "https://github.com/jumlid/Bonita")
-    upload("filetype-html", "Joke", "I made this site using joke.dev it can generate random joke according to users paramater", "https://github.com/jumlid/Joke.dev")
+    upload("filetype-html", "Buggyflix", "Buggyflix is a netflix clone users can watch any movie for free ", "https://github.com/jumlid/Buggyflix","https://buggyflix.jumli.in")
+    upload("controller", "Memory Game", "It's a memory game i made using Vanilla Javascript and yep there are some bug which made it ultra hardcore hehe", "https://github.com/jumlid/Memory_Game","http://memory-game.jumli.in/")
+    upload("filetype-html", "Bonita", "Bonita is a Heaven for waifu simps Users can search for Cute waifu", "https://github.com/jumlid/Bonita","https://jumlid.github.io/Bonita/")
+    upload("filetype-html", "Joke", "I made this site using joke.dev it can generate random joke according to users paramater", "https://github.com/jumlid/Joke.dev","https://jumlid.github.io/Joke.dev/")
     upload("discord", "Joke bot", "This bot can send random joke every interval (but due to some reason it stoped working so i need to fix i hope i'll fix it soon )", "https://github.com/jumlid/joke.dc/")
     upload("discord", " Quiz bot", "This bot can generate random guess the flag question in your server (i made this project a while ago i'm not sure if it work)", "https://github.com/jumlid/Flag.js")
-    upload("filetype-html", "NTA Mock Test", "I made a clone of NTA quiz site. I made this site so we student's  can practice for our entrance exam(CUET UG) since the main site was't working for us ( At the moment  when i'm writing this made the site).", "https://github.com/jumlid/NTA_mock_Test")
+    upload("filetype-html", "NTA Mock Test", "I made a clone of NTA quiz site. I made this site so we student's  can practice for our entrance exam(CUET UG) since the main site was't working for us ( At the moment  when i'm writing this made the site).", "https://github.com/jumlid/NTA_mock_Test","https://cuet-ug.jumli.in/")
     upload("filetype-html", "Buggyroll", "Unlike Buggyflix where i used a third party server to fetch movie here i used my google drive to host video and this was my one of the first real project i ever made so x_X update: :( The server i used to host my API got expired  ) ", "https://github.com/jumlid/buggyroll") 
   </script>
-<script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>
