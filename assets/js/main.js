@@ -148,6 +148,9 @@
   /**
    * Init isotope layout and filters
    */
+  function first_load_the_Data() {
+    
+  
   document.querySelectorAll('.isotope-layout').forEach(function (isotopeItem) {
     let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
     let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
@@ -155,6 +158,7 @@
 
     let initIsotope;
     imagesLoaded(isotopeItem.querySelector('.isotope-container'), function () {
+    //   console.log('was')
       initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
         itemSelector: '.isotope-item',
         layoutMode: layout,
@@ -165,6 +169,7 @@
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
       filters.addEventListener('click', function () {
+       
         isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
         this.classList.add('filter-active');
         initIsotope.arrange({
@@ -177,7 +182,8 @@
     });
 
   });
-
+  }
+  window.first_load_the_Data=first_load_the_Data
   /**
    * Init swiper sliders
    */
