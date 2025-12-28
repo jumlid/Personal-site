@@ -181,30 +181,34 @@ function upload_blog(id, head, int, url) {
 function blog(id) {
     // console.log('id id')
 
-    window.location.href = `./reading.html#${id}`
-    window.location.hash = `blog/${id}`
+    window.location.href = `/read/?id=${id}`
+    // window.location.hash = `blog/${id}`
     upload_b(id)
 
 }
-if (window.location.hash) {
-    // console.log('true')
-
-    upload_b(window.location.hash.split('#')[1])
-
+if (window.location.href.split('-')[1]) {
+   // console.log(true)
+    upload_b('-'+window.location.href.split('-')[1])
+    
 }
+
+
+//upload_b(window.location.href.split('#')[1])
+
+
 
 function upload_b(id) {
 
 
 
-    //  console.log(id)
+ //     console.log(id)
     get(child(ref(database), `Portfolio/blog/${id}`))
         .then((snap) => {
             document.getElementById('content').innerHTML = snap.val().data
             document.getElementById('date').innerText = snap.val().date
             document.getElementById('intro').innerText = snap.val().title
             document.getElementById('read_head').innerText = snap.val().title
-            document.getElementById('bg_img').src = snap.val().url
+            document.getElementsByClassName('bg_img')[0].style.backgroundImage=`url(${snap.val().url})`
 
         })
 
