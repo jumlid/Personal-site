@@ -164,7 +164,7 @@ function upload_blog(id, head, int, url) {
       <div id=b_id${id} class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" onclick="blog('${id}')">
             <div class="service-item">
               <div class="bg"
-                style=" height: 200px; margin-bottom: 10px; background-image: url(${url.trim()}); background-repeat: no-repeat; background-size: cover; object-fit: contain;">
+                style=" height: 200px; margin-bottom: 10px; background-image: url(${url.trim()}); background-repeat: no-repeat; background-size: contain; background-position:center;">
               </div>
 
               <h4>${head}</h4>
