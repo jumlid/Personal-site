@@ -134,7 +134,8 @@
             <div class="profile-card">
               <div class="profile-header">
                 <div class="profile-avatar">
-                  <img id="card_avatar"  src="assets/img/profile/140ace89c4319ef8f9336370652ff56e.jpg" class="img-fluid" alt="">
+                  <img id="card_avatar" src="assets/img/profile/140ace89c4319ef8f9336370652ff56e.jpg" class="img-fluid"
+                    alt="">
                   <div class="status-indicator"></div>
                 </div>
                 <h3 id="card_name">Jumli Doyom</h3>
@@ -528,21 +529,21 @@
     gtag('config', 'G-199GGVTG2E');
   </script>
   <script>
-    fetch("https://api.github.com/users/jumlid")
-    .then(data=>data.json())
-    .then(res=>{
-      document.getElementById('card_avatar').src=res.avatar_url
-      document.getElementById('card_name').innerText=res.login
-      document.getElementById('card_public_repo').innerText=res.public_repos
-      document.getElementById('card_follower').innerText=res.followers
-      document.getElementById('card_following').innerText=res.following
+    fetch("http://portfolio.jumli.in/profile")
+      .then(data => data.json())
+      .then(res => {
+        document.getElementById('card_avatar').src = res.avatar_url
+        document.getElementById('card_name').innerText = res.login
+        document.getElementById('card_public_repo').innerText = res.public_repos
+        document.getElementById('card_follower').innerText = res.followers
+        document.getElementById('card_following').innerText = res.following
 
-      //console.log(res)
-      /*
-      
-      
-      */
-    })
+        //console.log(res)
+        /*
+        
+        
+        */
+      })
 
     window.addEventListener("load", (e) => {
 
@@ -642,24 +643,33 @@
       first_load_the_Data()
 
     }
-   
 
 
-    function upload(project_type, project_name, about, github, url,) {
-      //  console.log('e')
-      if (url != "") {
 
-        document.getElementById("project_container").innerHTML += `
+    function upload(project_type, github) {
+
+      let repo = github.split('/')[4]
+      let user = github.split('/')[3]
+      // console.log(user, repo)
+      fetch(`http://portfolio.jumli.in/repo?user=${user}&repo=${repo}`, {
+
+      })
+        .then(res => res.json())
+        .then(data => {
+
+          if (data.homepage != "") {
+
+            document.getElementById("project_container").innerHTML += `
          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="service-item">
               <div class="icon-wrapper">
-                <i class="bi bi-${project_type}"></i>
+                <i class="bi bi-filetype-html"></i>
               </div>
-              <h4>${project_name}</h4>
-              <p>${about}</p>
+              <h4>${data.name}</h4>
+              <p>${data.description.split(" ").slice(0, 20).join(' ')}..</p>
               <a  class="read-more">
                 <a class="bi bi-github" style="font-size:20px; color:white;" href="${github}" target="_blank"></a>
-                <a class="bi bi-filetype-html" style="font-size:20px; color:white; margin-left:10px;" href="${url}" target="_blank"></a>
+                <a class="bi bi-filetype-html" style="font-size:20px; color:white; margin-left:10px;" href="${data.homepage}" target="_blank"></a>
                 
               </a>
             </div>
@@ -667,18 +677,18 @@
         
           
           `
-      }
-      else {
+          }
+          else {
 
 
-        document.getElementById("project_container").innerHTML += `
+            document.getElementById("project_container").innerHTML += `
          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="service-item">
               <div class="icon-wrapper">
-                <i class="bi bi-${project_type}"></i>
+                <i class="bi bi-code-slash"></i>
               </div>
-              <h4>${project_name}</h4>
-              <p>${about}</p>
+              <h4>${data.name}</h4>
+              <p>${data.description.split(" ").slice(0, 20).join(' ')}..</p>
               <a  class="read-more">
                 <a class="bi bi-github" style="font-size:20px; color:white;" href="${github}" target="_blank"></a>
                
@@ -689,7 +699,11 @@
         
           
           `
-      }
+          }
+        })
+
+      //  console.log('e')
+
     }
 
 
