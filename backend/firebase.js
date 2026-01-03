@@ -109,7 +109,7 @@ function read_Project() {
             //upload()
             Object.entries(snapshot.val()).forEach(Element => {
                 //  console.log(Element[1].icon, Element[1].name, Element[1].about, Element[1].github, Element[1].url)
-                upload(Element[1].icon, Element[1].name, Element[1].about, Element[1].github, Element[1].url)
+                upload(Element[1].icon,  Element[1].github)
             })
             read_Portfolio()
         })
