@@ -529,7 +529,7 @@
     gtag('config', 'G-199GGVTG2E');
   </script>
   <script>
-    fetch("http://portfolio.jumli.in/profile")
+    fetch("https://portfolio.jumli.in/profile")
       .then(data => data.json())
       .then(res => {
         document.getElementById('card_avatar').src = res.avatar_url
@@ -651,7 +651,7 @@
       let repo = github.split('/')[4]
       let user = github.split('/')[3]
       // console.log(user, repo)
-      fetch(`http://portfolio.jumli.in/repo?user=${user}&repo=${repo}`, {
+      fetch(`https://portfolio.jumli.in/repo?user=${user}&repo=${repo}`, {
 
       })
         .then(res => res.json())
