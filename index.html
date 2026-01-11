@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Jumli d</title>
-  <meta name="description" content="Hi, i'm jumli and this is my Portfolio, I'm a student of litrature from GMCB basar.">
+  <meta name="description"
+    content="Hi, i'm jumli and this is my Portfolio, I'm a student of litrature from GMCB basar.">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/apple-touch-icon.png"
-    rel="icon">
- 
+  <link href="assets/img/apple-touch-icon.png" rel="icon">
+
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -239,9 +239,13 @@
 
               <div class="skills-showcase" data-aos="fade-up" data-aos-delay="250">
                 <div class="section-tag">Activity</div>
-                <figure><embed src="https://wakatime.com/share/@dc1225cc-b806-47c5-a2df-76f50a821d4e/ac2e6e29-7e2e-4eee-81a8-a99c503984d7.svg"></embed></figure>
+                <figure><embed
+                    src="https://wakatime.com/share/@dc1225cc-b806-47c5-a2df-76f50a821d4e/ac2e6e29-7e2e-4eee-81a8-a99c503984d7.svg"></embed>
+                </figure>
 
-                <figure><embed src="https://wakatime.com/share/@dc1225cc-b806-47c5-a2df-76f50a821d4e/64e3039f-c985-4c57-bbca-5e27c54661b8.svg"></embed></figure>
+                <figure><embed
+                    src="https://wakatime.com/share/@dc1225cc-b806-47c5-a2df-76f50a821d4e/64e3039f-c985-4c57-bbca-5e27c54661b8.svg"></embed>
+                </figure>
               </div>
             </div>
           </div>
@@ -250,7 +254,6 @@
       </div>
 
     </section><!-- /About Section -->
-
 
 
 
@@ -341,43 +344,6 @@
         </div>
 
     </section><!-- /Portfolio Section -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -536,7 +502,7 @@
 
     function uploadp(tag, cap, url, title, video) {
 
-      if (video === "true") {
+      if (video === true) {
         // console.log('is video')
         document.getElementById("portfolio-list").innerHTML += `
        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-${tag}">
@@ -602,20 +568,16 @@
 
 
 
-    function upload(project_type, github) {
+    function upload(github) {
+      github.forEach(element => {
+        // console.log(user, repo)
+        fetch(`https://portfolio.jumli.in/repo?user=${element[1]}&repo=${element[0]}`)
+          .then(res => res.json())
+          .then(data => {
+           // console.log(data)
 
-      let repo = github.split('/')[4]
-      let user = github.split('/')[3]
-      // console.log(user, repo)
-      fetch(`https://portfolio.jumli.in/repo?user=${user}&repo=${repo}`, {
-
-      })
-        .then(res => res.json())
-        .then(data => {
-
-          if (data.homepage != "") {
-
-            document.getElementById("project_container").innerHTML += `
+            if (data.homepage != "") {
+              document.getElementById("project_container").innerHTML += `
          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="service-item">
               <div class="icon-wrapper">
@@ -633,11 +595,11 @@
         
           
           `
-          }
-          else {
+            }
+            else {
 
 
-            document.getElementById("project_container").innerHTML += `
+              document.getElementById("project_container").innerHTML += `
          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="service-item">
               <div class="icon-wrapper">
@@ -655,8 +617,14 @@
         
           
           `
-          }
-        })
+            }
+          })
+
+
+      });
+
+
+
 
       //  console.log('e')
 
