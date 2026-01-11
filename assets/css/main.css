@@ -660,6 +660,10 @@ h6 {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
+  .tag{
+    height: fit-content;
+  
+  }
 }
 
 /*--------------------------------------------------------------
