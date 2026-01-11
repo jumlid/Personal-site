@@ -88,6 +88,10 @@ h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
+.tag{
+ 
+  height: 120px;
+}
 
 /* PHP Email Form Messages
 ------------------------------*/
@@ -1233,6 +1237,7 @@ section,
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
+   
   }
 
   100% {
