@@ -451,7 +451,7 @@
     gtag('config', 'G-199GGVTG2E');
   </script>
   <script>
-    fetch("https://portfolio.jumli.in/profile")
+    fetch("https://nodejs-serverless-function-express-virid-theta.vercel.app/api/profile")
       .then(data => data.json())
       .then(res => {
         document.getElementById('card_avatar').src = res.avatar_url
@@ -571,7 +571,7 @@
     function upload(github) {
       github.forEach(element => {
         // console.log(user, repo)
-        fetch(`https://portfolio.jumli.in/repo?user=${element[1]}&repo=${element[0]}`)
+        fetch(`https://nodejs-serverless-function-express-virid-theta.vercel.app/api/repo?user=${element[1]}&repo=${element[0]}`)
           .then(res => res.json())
           .then(data => {
            // console.log(data)
