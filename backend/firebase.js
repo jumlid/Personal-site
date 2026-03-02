@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
 import { getDatabase, ref, onValue, set, push, get, child } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
 //import { email } from "discord.js";
 const firebaseConfig = {
     apiKey: "AIzaSyAoxwmoiMpcz0W9wqdJPMByFBCtjFyOScc",
@@ -18,11 +19,43 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app)
+var aut = getAuth(app)
+var provider = new GithubAuthProvider()
+async function login() {
+    try {
+        const result = await signInWithPopup(aut, provider)
+        const user = result.user;
+        //console.log(user.uid)
+    } catch (error) {
+        console.log('errror', error.code, error.message)
+
+    }
+
+
+}
+onAuthStateChanged(aut, (user) => {
+    if (user) {
+        //    console.log('login')
+        document.getElementById('starter-section_logout').className = 'starter-section section d-none align-items-center flex-column'
+        document.getElementById('starter-section_login').className = 'starter-section section d-flex align-items-center flex-column'
+        console.log(document.getElementById('starter-section_logout'))
+    }
+    else {
+        //  console.log('logout')
+        document.getElementById('starter-section_logout').style.display = 'flex'
+        document.getElementById('starter-section_login').style.display = 'none'
+    }
+
+})
+
+
+
+
+
 /*
 const auth = getAuth(app)
 let email = 'example@gmail.com'
 let password = '123456789'
-
 signInWithEmailAndPassword(auth, email, password)
     .then((users) => {
         const use = users.user
@@ -182,10 +215,8 @@ function upload_blog(id, head, int, url) {
               <div class="bg"
                 style=" height: 200px; margin-bottom: 10px; background-image: url(${url.trim()}); background-repeat: no-repeat; background-size: contain; background-position:center;">
               </div>
-
               <h4>${head}</h4>
               <p> ${int}</p>
-
             </div>
           </div>`
     } else {
@@ -249,9 +280,4 @@ window.read_Project = read_Project
 window.Add_project = Add_project
 window.Add_Portfolio = Add_Portfolio
 window.Add_blog = Add_blog
-
-
-
-
-
-
+window.login = login
