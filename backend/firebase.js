@@ -25,7 +25,7 @@ async function login() {
     try {
         const result = await signInWithPopup(aut, provider)
         const user = result.user;
-        console.log(user.uid)
+     //   console.log(user.uid)
     } catch (error) {
         console.log('errror', error.code, error.message)
 
