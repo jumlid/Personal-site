@@ -12,7 +12,8 @@
   <link href="https://d2naapwr4zpnvs.cloudfront.net/influencerAvatar/132043-1692733186959-small-983138528.jpg"
     rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -61,7 +62,7 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="#about">Get Started</a>
+      <a class="btn-getstarted" onclick="login()">Sign in</a>
 
     </div>
   </header>
@@ -82,18 +83,64 @@
     </div><!-- End Page Title -->
 
     <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section d-flex align-items-center flex-column">
+    <section id="starter-section_logout" class="starter-section section d-none align-items-center flex-column">
 
       <h1>HOW BRO MUST HAVE FELT <br></h1>
-      
+
       <IMG src="https://i.pinimg.com/474x/96/e9/58/96e9583b40cb8a1c6640d5f94fb86e9f.jpg"></IMG>
       <p>Amigo i are't that dumb</p>
+    </section>
+
+
+
+
+    <section id="starter-section_login" class=" starter-section section d-none align-items-center flex-column">
+      <h1>Upload Blog</h1>
+      <div>
+        <input type="text" placeholder="Intro" id="Write_blog_intro" autocomplete="off">
+        <input type="date" placeholder="Date" id="Write_blog_date" autocomplete="off">
+        <input type="text" placeholder="Title" id="Write_blog_title" autocomplete="off">
+        <input type="text" placeholder="Url" id="Write_blog_url" autocomplete="off">
+        <textarea style="width: 90%; height: 200px;" id="write_blog_here" placeholder="Write your blog here"
+          autocomplete="off"></textarea>
+
+      </div>
+
+      <button onclick="Add_blog()">Upload</button>
+    
+
+
+    <section id="starter-section" class=" starter-section section d-flex align-items-center flex-column">
+      <h1>Upload Project</h1>
+
+      <input type="text" id="project_github" placeholder="Github Url" autocomplete="off">
+
+      <button onclick="Add_project()">Upload</button>
+    </section>
+
+    <section id="starter-section" class=" starter-section section d-flex align-items-center flex-column">
+      <h1>Upload Portfolio</h1>
+      <div style=" width: 800px;  ">
+        <input type="text" placeholder="caption" autocomplete="off" id="portfolio_caption">
+        <select name="Tag" id="portfolio_tag">
+          <option value="photography">Photography</option>
+          <option value="development">Development</option>
+          <option value="video">Video</option>
+
+        </select>
+        <input type="text" placeholder="title" id="portfolio_title">
+        <input type="text" placeholder="URL" id="portfolio_url">
+        <button onclick="Add_Portfolio()">Upload</button>
+
+
+      </div>
+
+    </section>
+    </section>
 
   </main>
 
   <footer id="footer" class="footer">
-
-
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
@@ -163,7 +210,7 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  
+
 
 
   <style>
@@ -188,7 +235,7 @@
   <!-- Main JS File -->
 
   <script src="/assets/js/main.js"></script>
-  <script type="module" src="backend/firebase.js"></script>
+  <script type="module" src="/backend/firebase.js"></script>
 
 </body>
 
