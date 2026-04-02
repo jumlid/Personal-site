@@ -25,25 +25,33 @@ async function login() {
     try {
         const result = await signInWithPopup(aut, provider)
         const user = result.user;
-        //console.log(user.uid)
+        console.log(user.uid)
     } catch (error) {
         console.log('errror', error.code, error.message)
 
     }
-
-
 }
 onAuthStateChanged(aut, (user) => {
     if (user) {
-        //    console.log('login')
-        document.getElementById('starter-section_logout').className = 'starter-section section d-none align-items-center flex-column'
+
         document.getElementById('starter-section_login').className = 'starter-section section d-flex align-items-center flex-column'
-        console.log(document.getElementById('starter-section_logout'))
+        document.getElementById('starter-section_logout').className = "starter-section section d-none align-items-center flex-column"
+        //  document.getElementById('starter-section_login').style.display = 'none'
+
+        // console.log('login')
+        //  document.getElementById('starter-section_logout').className = 'starter-section section d-none align-items-center flex-column'
+        document.getElementsByClassName('btn-getstarted')[0].className = 'btn-getstarted section d-none '
+
     }
     else {
-        //  console.log('logout')
-        document.getElementById('starter-section_logout').style.display = 'flex'
-        document.getElementById('starter-section_login').style.display = 'none'
+
+
+
+
+        // console.log('logout')
+        document.getElementById('starter-section_logout').className = "starter-section section d-flex align-items-center flex-column"
+        document.getElementById('starter-section_login').className = 'starter-section section d-none align-items-center flex-column'
+        // document.getElementById('starter-section_login').style.display = 'none'
     }
 
 })
@@ -84,7 +92,17 @@ function Add_blog() {
 
 
 
+
     )
+        .then(() => {
+            document.getElementById('Write_blog_title').value = ''
+            document.getElementById('Write_blog_date').value = ''
+            document.getElementById('Write_blog_intro').value = ''
+            document.getElementById('write_blog_here').value = ''
+            document.getElementById('Write_blog_url').value = ''
+
+            alert('Done uploading')
+        })
 
     //console.log(title, date, intro, data, url)
 }
@@ -115,6 +133,14 @@ function Add_Portfolio() {
         title: title,
         is_video: is_video
     })
+        .then(() => {
+
+            document.getElementById("portfolio_caption").value = ''
+            document.getElementById("portfolio_url").value = ''
+            document.getElementById("portfolio_title").value = ''
+
+            alert('Done uploading')
+        })
 
 
 }
@@ -129,6 +155,11 @@ function Add_project() {
     push(ref(database, "Portfolio/project_section"), {
         github: github,
     })
+        .then(() => {
+            document.getElementById("project_github").value = ''
+
+            alert('Done uploading')
+        })
 
 
 
