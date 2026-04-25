@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script type="application/ld+json">
 {
@@ -128,7 +129,7 @@
           <div class="col-lg-8 text-center">
             <h2>Hi, I'm Jumli</h2>
             <p>I like <span class="typed"
-                data-typed-items="anime [Genre:Fantasy Isekai action]!_! ,Games [Genre:action RPG Sandbox],Reading [Manga Manhua manhwa and sometimes LN ],Programming hehe!!, Pop music J-pop, Dogs, photography  "></span><span
+                data-typed-items="anime [Genre:Fantasy Isekai action]!_! ,Games [Genre:action RPG Sandbox],Reading [Manga Manhua manhwa and LN ],Programming hehe!!, Dogs, photography  "></span><span
                 class="typed-cursor" aria-hidden="true"></span></p>
             <div class="social-links">
               <a href="https://x.com/boi_404_"><i class="bi bi-twitter-x"></i></a>
@@ -526,7 +527,7 @@
 
 
 
-
+    //This function is responsible for uploadind portfolio 
     function uploadp(tag, cap, url, title, video) {
 
       if (video === true) {
@@ -594,14 +595,15 @@
     }
 
 
-
+    // This part fetch data from the API i made using vercel serverless feature
+    // This function just  fetch the project data from the github api 
     function upload(github) {
       github.forEach(element => {
         // console.log(user, repo)
         fetch(`https://nodejs-serverless-function-express-virid-theta.vercel.app/api/repo?user=${element[1]}&repo=${element[0]}`)
           .then(res => res.json())
           .then(data => {
-           // console.log(data)
+            // console.log(data)
 
             if (data.homepage != "") {
               document.getElementById("project_container").innerHTML += `
@@ -653,13 +655,8 @@
 
 
 
-      //  console.log('e')
 
     }
-
-
-
-
   </script>
   <script src="assets/js/main.js"></script>
   <script type="module" src="backend/firebase.js"></script>
