@@ -25,7 +25,7 @@ async function login() {
     try {
         const result = await signInWithPopup(aut, provider)
         const user = result.user;
-     //   console.log(user.uid)
+        console.log(user.uid)
     } catch (error) {
         console.log('errror', error.code, error.message)
 
@@ -59,20 +59,6 @@ onAuthStateChanged(aut, (user) => {
 
 
 
-
-/*
-const auth = getAuth(app)
-let email = 'example@gmail.com'
-let password = '123456789'
-signInWithEmailAndPassword(auth, email, password)
-    .then((users) => {
-        const use = users.user
-    })
-    .catch(() => {
-        console.log('who t f are you?????')
-    })
-*/
-// FOR ADMIN PANEL
 
 // This will upload blog to the main firebase database using the admin panel
 function Add_blog() {
@@ -173,16 +159,48 @@ function Add_project() {
 // This will read the database for the blog 
 // This This isn't the main blog it's just the homepage intro blog which will load when users render the blog section 
 function read_blog_from_database() {
+
     get(child(ref(database), "Portfolio/blog"))
         .then((snapshot => {
+
             Object.entries(snapshot.val()).forEach(Element => {
 
-                upload_blog(Element[0], Element[1].title, Element[1].intro, Element[1].url)
+                upload_blog(Element[0], Element[1].title, Element[1].intro, Element[1].url, Element[1].date)
             })
 
         }))
 
 }
+// This function is for private block
+// This function check weather the Phrase enter is correct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Same as the code above this section of will fetch data from firebase realtime database to display in homepage of my site
 function read_Project() {
@@ -237,17 +255,20 @@ function read_Portfolio() {
 // -which is filled by the read blog function first para is id it's a unique id given by the firebase here i'm using this to identify blogs , head it's the Title or head tag of the blog and for the 
 // -int it stands for introduction hmm it's just the first few words of by blog , url it's the image url 
 
-function upload_blog(id, head, int, url) {
+function upload_blog(id, head, int, url, date) {
     //  console.log('uplad')
     if (document.getElementById('blog_container')) {
         document.getElementById('blog_container').innerHTML += `
       <div id=b_id${id} class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100" onclick="blog('${id}')">
             <div class="service-item">
               <div class="bg"
-                style=" height: 230px; margin-bottom: 10px; background-image: url(${url.trim()}); background-repeat: no-repeat; background-size: cover; background-position:center;">
+                style="height: 230px; margin-bottom: 10px; background-image: url(${url.trim()}); background-repeat: no-repeat; background-size: cover; background-position:center;">
               </div>
-              <h4>${head}</h4>
+              
+              <h4>${head} </h4> 
+             
               <p> ${int}</p>
+              <i class="bi bi-calendar" style="background-color:#dc3545; padding:5px;  border-radius:10px; "> ${date}</i>
             </div>
           </div>`
     } else {
@@ -256,6 +277,7 @@ function upload_blog(id, head, int, url) {
 
 
 }
+
 
 //This is my fav one :love blog as you can see above in function upload_blog i have a adding element inside blog_container and it has a onclick function which will redirect users to another potion
 //- that's /read/index.html and this function have 1 para called id which we have discussed earlier when users click on this button it will change users url to <actual url>/read/?id=<id> 
@@ -279,24 +301,163 @@ if (window.location.href.split('-')[1]) {
 //upload_b(window.location.href.split('#')[1])
 
 
+/*
+const p = new Promise((resolve, reject) => {
+    check()
+    function check() {
+        let p = document.getElementById('phrase').value
+        get(child(ref(database), "Portfolio/blog"))
+            .then((snap => {
+                if (snap.val()[id].password === p) {
+                    alert('yep')
 
-//This one is the main backbone for the blog section this will be tregire from the blog section with one id as a para when this function is start it will fetch the whole blog from the
-//  firebase using the id given by the parameter 
-function upload_b(id) {
+                }
+                else {
+                    alert('bruh')
+                }
 
+
+
+            }))
+
+        resolve()
+    }
+
+
+
+
+
+})
+
+*/
+function check(id) {
+
+    //let id = window.location.href.split('=')[1]
+    return new Promise((resolve, reject) => {
+        //  console.log('start')
+        let p = document.getElementById('phrase').value
+        get(child(ref(database), "Portfolio/blog"))
+            .then((snap => {
+                //        console.log('a')
+                switch (snap.val()[id].password) {
+                    case p:
+                        resolve('For real?')
+                        break;
+                    case ' ':
+
+                        reject('...?')
+                        break;
+
+                    default:
+                        reject('!_! May i know Who are you?')
+                        break;
+                }
+
+
+
+
+            }))
+
+
+
+    })
+
+}
+
+
+
+
+
+
+
+
+
+
+//This one is the main backbone for the blog section this will be tregire from the blog section with one id as a parameter when this function is start it will fetch the whole blog from the
+//  here id is a uniqe key created by firebase system
+async function upload_b() {
+    let id = window.location.href.split('=')[1]
+    // console.log(1)
 
 
     //     console.log(id)
-    get(child(ref(database), `Portfolio/blog/${id}`))
-        .then((snap) => {
-            document.getElementById('content').innerHTML = snap.val().data
+    const snap = await get(child(ref(database), `Portfolio/blog/${id}`))
+    if (snap.val().private) {
+        document.getElementsByClassName('password_wall')[0].style.display = 'flex'
+        document.getElementById('content').innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit.Autem animi suscipit ratione qui eveniet ? Cum accusamus omnis veniam, distinctio aliquam dicta velit est, quis quo recusandae odit.Enim, ratione optio ?     Ipsam tempora vel quia necessitatibus nisi perferendis exercitationem mollitia odit praesentium dolore eius aut quam magnam enim tempore, fuga voluptas velit nulla! Omnis sit a sequi, corrupti illo suscipit.Maxime!"
+        document.getElementById('date').innerText = snap.val().date
+        document.getElementById('intro').innerText = 'Unauthorised Access'
+        document.getElementById('read_head').innerText = 'Lil biro thought he did smt?'
+        document.getElementsByClassName('bg_img')[0].style.backgroundImage = `url(${snap.val().url})`
+
+        check(id)
+
+            .then(data => {
+                document.getElementsByClassName('password_wall')[0].style.display = 'none                     '
+                document.getElementById('content').innerHTML = snap.val().data
+                document.getElementById('date').innerText = snap.val().date
+                document.getElementById('intro').innerText = snap.val().title
+                document.getElementById('read_head').innerText = snap.val().title
+                document.getElementsByClassName('bg_img')[0].style.backgroundImage = `url(${snap.val().url})`
+            })
+            .catch(error => {
+                alert(error)
+               // console.error(error)
+            })
+
+
+
+
+    }
+    else {
+        document.getElementsByClassName('password_wall')[0].style.display = 'none                     '
+        document.getElementById('content').innerHTML = snap.val().data
+        document.getElementById('date').innerText = snap.val().date
+        document.getElementById('intro').innerText = snap.val().title
+        document.getElementById('read_head').innerText = snap.val().title
+        document.getElementsByClassName('bg_img')[0].style.backgroundImage = `url(${snap.val().url})`
+
+    }
+
+
+
+
+
+    /*
+    
+    
+    
+    
+        if (!snap.val().private) {
+    
+    
+    
+    
+        }
+        else {
+    
+    
+            //alert('You got no permission')
+    
+    
+    
+    
+    
+    
+      
+            /*
+            document.getElementById('content').innerHTML = `<h1>INVALID PERMISSION</h1> <br> Lil bro that won't work here told ya i no dumb! `
             document.getElementById('date').innerText = snap.val().date
-            document.getElementById('intro').innerText = snap.val().title
-            document.getElementById('read_head').innerText = snap.val().title
-            document.getElementsByClassName('bg_img')[0].style.backgroundImage = `url(${snap.val().url})`
+            document.getElementById('intro').innerText = 'Permission required'
+            document.getElementById('read_head').innerText = 'Permission required'
+            document.getElementsByClassName('bg_img')[0].style.backgroundImage = `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJj1EQfPDQWP127ReoZhzagoMM8V4NJWDpQ&s)`
+        
+}
 
-        })
 
+
+
+console.log(3)*/
 
 }
 
@@ -305,6 +466,7 @@ function upload_b(id) {
 
 //window.upload_blog_to_database = upload_blog_to_database
 window.blog = blog
+window.upload_b = upload_b
 window.read_blog_from_database = read_blog_from_database
 window.read_Portfolio = read_Portfolio
 window.read_Project = read_Project
@@ -312,3 +474,4 @@ window.Add_project = Add_project
 window.Add_Portfolio = Add_Portfolio
 window.Add_blog = Add_blog
 window.login = login
+window.check = check
