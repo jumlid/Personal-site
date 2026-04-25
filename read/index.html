@@ -40,6 +40,20 @@
 </head>
 
 <body class="portfolio-details-page">
+  <div class="password_wall" style=" position: fixed; display: none; justify-content: center; align-items: center;  height: 100%; width: 100vw; z-index: 100; background-color: #1c1c1c;">
+    <div class="password"
+      style=" border-radius: 20px; width: 500px; height: 500px; display: flex; justify-content: center;align-items: center; flex-direction: column;  background-color: #121212;">
+      <h3>Whats the Magical phrase?<br></h3>
+      <input id="phrase" type="text" placeholder="Do i know you?" autocomplete="off">
+      <span>
+        <a onclick="upload_b()"> Yes?</a>
+        <a href="/">No</a>
+      </span>
+    </div>
+  </div>
+  <div class="wall">
+    <div class="input"></div>
+  </div>
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
@@ -87,6 +101,7 @@
 
   <main class="main">
 
+
     <!-- Page Title -->
     <div class="page-title light-background">
       <div class="container">
@@ -121,7 +136,9 @@
 
 
             <!--   <img id="bg_img" height="100%" width="100%" src="" alt="Portfolio Image" class="img-fluid">-->
-            <div class="bg_img" style=" height: 100%; width: 100%; background-position: center;   object-fit: contain; background-size: contain; background-repeat: no-repeat; background-image: url(https://static.vecteezy.com/system/resources/previews/008/255/804/non_2x/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-graffiti-sprayed-page-not-found-error-404-isolated-on-white-background-vector.jpg);"></div>
+            <div class="bg_img"
+              style=" height: 120%; width: 100%; background-position: center;   object-fit: contain; background-size: contain; background-repeat: no-repeat; background-image: url(https://static.vecteezy.com/system/resources/previews/008/255/804/non_2x/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-graffiti-sprayed-page-not-found-error-404-isolated-on-white-background-vector.jpg);">
+            </div>
 
 
 
@@ -136,7 +153,9 @@
               <span class="date" id><i class="bi bi-calendar"></i> <span id="date">2025-12-17</span> </span>
 
             </div>
-            <div id="content"></div>
+            <div id="content">
+
+            </div>
 
 
           </div>
@@ -216,7 +235,24 @@
     </div>
 
   </footer>
+  <style>
+    span a {
+      position: relative;
+      color: white;
+      top: 5px;
+      border-radius: 20%;
+      padding: 5px;
+      background-color: #ff4d4f;
 
+    }
+
+    span a:hover {
+      color: white;
+      cursor: pointer;
+
+
+    }
+  </style>
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
