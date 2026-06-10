@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script type="application/ld+json">
 {
@@ -128,7 +129,7 @@
           <div class="col-lg-8 text-center">
             <h2>Hi, I'm Jumli</h2>
             <p>I like <span class="typed"
-                data-typed-items="anime [Genre:Fantasy Isekai action]!_! ,Games [Genre:action RPG Sandbox],Reading [Manga Manhua manhwa and sometimes LN ],Programming hehe!!, Pop music J-pop, Dogs, photography  "></span><span
+                data-typed-items="anime [Genre:Fantasy Isekai action]!_! ,Games [Genre:action RPG Sandbox],Reading [Manga Manhua manhwa and LN ],Programming hehe!!, Dogs, photography  "></span><span
                 class="typed-cursor" aria-hidden="true"></span></p>
             <div class="social-links">
               <a href="https://x.com/boi_404_"><i class="bi bi-twitter-x"></i></a>
@@ -136,6 +137,9 @@
               <a href="https://www.instagram.com/boi.404"><i class="bi bi-instagram"></i></a>
 
             </div>
+            <span>
+              
+            </span>
           </div>
         </div>
       </div>
@@ -199,31 +203,11 @@
             <div class="content-wrapper">
               <div class="bio-section">
                 <div class="section-tag">About Me</div>
-                <h2>About my Journey</h2>
-                <p>I was always curious about programming and tech from the very beginning. I really wanted to learn or
-                  at least try, but I didn’t have a PC or a personal phone. When I reached class 9 (around 14), I
-                  finally got my first laptop — an Ideapad 330. For the first few months I just scrolled around, watched
-                  YouTube, movies, and random stuff. </p>
-                <p>After some time, I realized what I was doing vs what I actually wanted to do. So I started learning
-                  HTML from YouTube. And trust me when I say this — I was using Notepad++ like fr?? At that time I had
-                  no idea wtf VS Code even was T_T. I was aimless and spent my whole year stuck in basic HTML tutorial
-                  hell.</p>
-                <p>Then class 10 happened. Same story, different language. I tried Python because I heard it was “easy.”
-                  Guess what? Same tutorial hell again. Zero original projects. Everything I made was by typing
-                  line-by-line from YouTube.
-                  But one thing I actually liked from that time was a student database desktop app I made using Python +
-                  Kivy. That was probably my first real “project,” even though it was still tutorial-based.</p>
-                <p>
-                  Class 11 was my whole renaissance moment. This is when I realized wtf I was doing with my life. I
-                  started using ChatGPT to actually guide me through personal projects. This was also when I learned
-                  JavaScript — and it instantly became my favorite language. It was weird but easy to work with. After
-                  that, I started making my own projects like Buggyflix, NTA mock tests, and more.
-                </p>
-                <p>Honestly, if I had a mentor or someone older to guide me, I could’ve saved so much time. But now I’m
-                  in college — I have resources, but not the time or energy. I’m still using my old potato Ideapad 330.
-                  I installed Linux in class 12, and when I reached college, I swapped my HDD to an SSD and permanently
-                  switched to Debian. And I’m still using that setup today.</p>
-
+                 <div class="section-tag">About Me</div>
+                <p> Hi, I’m Jumli — an English major at Government Model College and a self-taught developer who somehow ended up spending way too much time building things instead of just using them. </p> 
+                <p> People usually expect literature students to spend their time reading novels and writing essays (which, to be fair, I also do), but I genuinely enjoy programming because I like solving problems and experimenting. If a mock test site isn’t working, I’ll probably try making one. If I want a better way to stream or organize content, I’ll build something and see what happens. Most of my projects start with a simple thought: </p> <blockquote> “Why doesn’t this exist the way I want it to?” </blockquote>
+                <p> I mainly work with vanilla JavaScript and enjoy building full-stack projects, APIs, bots, and random experiments that slowly become bigger than I planned. I like figuring things out by breaking, rebuilding, and improving them over time. </p> <p> Lately, I’ve been interested in game development with Godot, backend systems, and experimenting with IoT and microcontrollers just to see what cool things I can make. I also enjoy learning new tech when curiosity wins — whether that’s TypeScript, databases, Linux tinkering, or tools I probably didn’t need but wanted to understand anyway. </p> <p> Outside of coding, I’m a huge anime and manga fan — especially fantasy, action, and isekai. Series like <i>Overlord</i>, <i>That Time I Got Reincarnated as a Slime</i>, <i>Mushoku Tensei</i>, and <i>The Eminence in Shadow</i> have permanently occupied part of my personality at this point. So yes, calling me an otaku would be accurate. </p> <p> This website started from a template (first time using one — character development), but it’s far from copy-paste. I’ve customized and expanded it with my own features, including project sections, timestamps, admin functionality, and other experiments. Scroll around and you’ll probably find a few chaotic details, including stats that may or may not expose how many hours I’ve spent trying to center a div. </p> <p> I’m not a Computer Science student, and sometimes college gets in the way, meaning projects pause while life happens — but I always end up coming back to build something new. </p>
+              
               </div>
 
               <div class="details-grid">
@@ -526,7 +510,7 @@
 
 
 
-
+    //This function is responsible for uploadind portfolio 
     function uploadp(tag, cap, url, title, video) {
 
       if (video === true) {
@@ -594,14 +578,17 @@
     }
 
 
-
+    // This part fetch data from the API i made using vercel serverless feature
+    // This function just  fetch the project data from the github api 
     function upload(github) {
+  //    console.log(github)
       github.forEach(element => {
+      //  console.log(`https://github.com/${element[1]}/${element[0]}`)
         // console.log(user, repo)
         fetch(`https://nodejs-serverless-function-express-virid-theta.vercel.app/api/repo?user=${element[1]}&repo=${element[0]}`)
           .then(res => res.json())
           .then(data => {
-           // console.log(data)
+            // console.log(data)
 
             if (data.homepage != "") {
               document.getElementById("project_container").innerHTML += `
@@ -613,7 +600,7 @@
               <h4>${data.name}</h4>
               <p>${data.description.split(" ").slice(0, 20).join(' ')}..</p>
               <a  class="read-more">
-                <a class="bi bi-github" style="font-size:20px; color:white;" href="${github}" target="_blank"></a>
+                <a class="bi bi-github" style="font-size:20px; color:white;" href="https://github.com/${element[1]}/${element[0]}" target="_blank"></a>
                 <a class="bi bi-filetype-html" style="font-size:20px; color:white; margin-left:10px;" href="${data.homepage}" target="_blank"></a>
                 
               </a>
@@ -653,13 +640,8 @@
 
 
 
-      //  console.log('e')
 
     }
-
-
-
-
   </script>
   <script src="assets/js/main.js"></script>
   <script type="module" src="backend/firebase.js"></script>
